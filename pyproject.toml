@@ -1,0 +1,15 @@
+[project]
+name = "ml-for-absolute-beginners"
+version = "0.1.0"
+description = "Notebook exercises for Machine Learning for Beginners."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ipykernel",
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "scipy",
+    "seaborn",
+]
