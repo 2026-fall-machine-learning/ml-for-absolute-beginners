@@ -1,5 +1,17 @@
 # Environment Spelunking Summary
 
+## Your Prompts
+
+1. how to deactivate .venv from terminal
+2. `uv pip list` does it list installed or what would be installed, curious why it shows everything for venv even when not active
+3. summarize env (with `uv python list` output)
+4. is this messy, or pretty clean
+5. i chose 3.12 for this project, initially because of some pip lib probs, was that the right choice, or should i make projs work with 3.14
+6. does 3.12 in toml mean dependencies will be versions for 3.12 and not necessarily the latest
+7. `where deactivate` new to me, where is it from, just a bash script, but where
+8. summarize this spelunking chat in an md file for this project please
+9. md didn't include your best advice, uv pip list --system or whatever, why not
+
 Date: 2026-07-24
 Project: ML-for-Absolute-Beginners
 
@@ -8,6 +20,32 @@ Project: ML-for-Absolute-Beginners
 - `uv pip list` shows packages that are already installed in the environment `uv` selected.
 - It does not show hypothetical packages that would be installed.
 - In a project folder with `.venv`, `uv` often auto-detects and uses that environment even if the shell is not manually activated.
+
+## Most useful `uv` targeting commands
+
+- Force project virtual environment explicitly:
+
+```sh
+uv pip list --python .venv/bin/python
+```
+
+- Force system Python instead of project `.venv`:
+
+```sh
+uv pip list --system
+```
+
+- Quick check of which interpreter `uv` is about to use:
+
+```sh
+uv run python -c "import sys; print(sys.executable)"
+```
+
+- Equivalent check pinned to the project environment:
+
+```sh
+uv run --python .venv/bin/python python -c "import sys; print(sys.executable)"
+```
 
 ## Why packages still appear when `.venv` is "not active"
 
