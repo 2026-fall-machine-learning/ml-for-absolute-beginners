@@ -60,3 +60,14 @@ If you see `ModuleNotFoundError: No module named 'scipy.sparse'`, reinstall the 
 ```powershell
 uv pip install --python .\.venv\Scripts\python.exe --reinstall numpy scipy scikit-learn
 ```
+
+## k-means.py: comparing k values with MLflow
+
+`k-means.py` is a plain script (not a notebook) that fits k-Means for several values of `k` on the tips dataset and logs each run's parameters, metrics (inertia, silhouette score) and plots to [MLflow](https://mlflow.org/), so the runs can be compared side by side instead of eyeballing a single scree plot.
+
+```powershell
+uv run python k-means.py
+uv run mlflow ui
+```
+
+Then open the printed local URL (typically `http://127.0.0.1:5000`). MLflow stores its data locally in `mlflow.db` and `mlruns/`, which are git-ignored.
