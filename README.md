@@ -27,6 +27,24 @@ This uses `pyproject.toml` to install all notebook dependencies into `.venv`.
 python -m ipykernel install --user --name ml-absolute-beginners --display-name "Python (ml-absolute-beginners)"
 ```
 
+## Comparing k-means cluster counts
+
+Run the standalone script from the repository root:
+
+```powershell
+python kmeans.py
+```
+
+It compares `k=1` through `k=10` on the `total_bill` and `size` features in `data/tips.csv`. Each run logs inertia to the local `mlflow.db`; runs with `k > 1` also log a silhouette score.
+
+To browse the results:
+
+```powershell
+mlflow ui --backend-store-uri sqlite:///mlflow.db
+```
+
+Then open http://127.0.0.1:5000.
+
 ## VS Code notebook workflow
 
 1. Install the **Python** and **Jupyter** VS Code extensions.
